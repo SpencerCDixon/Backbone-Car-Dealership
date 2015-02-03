@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require handlebars-v2.0.0
 //= require_tree .
 //
 
@@ -26,7 +27,10 @@ $(function() {
       var that = this;
       cars.fetch({
         success: function() {
-          that.$el.html('This is some stuff');
+          var source   = $("#cars-listing-template").html();
+          var template = Handlebars.compile(source);
+          var context = {cars: cars.toJSON()}
+          that.$el.html(template(context));
         }
       });
     }

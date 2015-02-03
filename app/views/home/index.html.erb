@@ -1,3 +1,11 @@
 <h1>Cars</h1>
 <hr />
 <div id="cars">loading.. </div>
+
+<script id="cars-listing-template" type="text/x-handlebars-template">
+  {{#each cars}}
+    <ul>
+      <li>{{make}}, {{year}}</li>
+    </ul>
+  {{/each}}
+</script>
