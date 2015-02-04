@@ -23,7 +23,7 @@ $(function() {
   var CarList = Backbone.View.extend({
     el: '#cars',
     render: function() {
-      var cars = new Cars().sort();
+      var cars = new Cars();
       var that = this;
       cars.fetch({
         success: function() {
@@ -41,8 +41,8 @@ $(function() {
 
   var Cars = Backbone.Collection.extend({
     url: '/cars',
-    model: Car,
-    comparator: 'make'
+    model: Car
+    // comparator: 'make'
   });
 
   // Routes
@@ -61,8 +61,7 @@ $(function() {
   });
 
   router.on('route:sorting', function() {
-    debugger;
-    alert('sorting');
+    // carList.render(new Cars())
   });
 
   Backbone.history.start();
